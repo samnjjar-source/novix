@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NOVIX Technologies — مواقع ومتاجر وتطبيقات</title>
+<meta name="description" content="NOVIX Technologies: نصمّم ونطوّر المتاجر الإلكترونية وتطبيقات الهواتف والأنظمة البرمجية في العراق.">
+<meta property="og:title" content="NOVIX Technologies">
+<meta property="og:description" content="نحوّل أفكارك إلى حلول رقمية متكاملة — متاجر، تطبيقات، أنظمة.">
+<meta property="og:image" content="images/mogambo-1.webp">
+<meta name="theme-color" content="#050b1f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#050b1f}
+a{color:#8fb0ff}a:hover{color:#ffffff}
+*{box-sizing:border-box}
+@keyframes nvFloatA{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-18px) rotate(-6deg)}}
+@keyframes nvFloatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-24px)}}
+@keyframes nvFloatC{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-14px) rotate(6deg)}}
+@keyframes nvBlob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,-40px) scale(1.15)}66%{transform:translate(-40px,30px) scale(.9)}}
+@keyframes nvMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes nvRise{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+@keyframes nvIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes nvFill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes nvPulse{0%,100%{box-shadow:0 0 0 0 rgba(47,107,255,.55)}50%{box-shadow:0 0 0 14px rgba(47,107,255,0)}}
+.nv-in{animation:nvIn .9s cubic-bezier(.2,.7,.2,1) both}
+.nv-d1{animation-delay:.12s}.nv-d2{animation-delay:.24s}.nv-d3{animation-delay:.36s}.nv-d4{animation-delay:.5s}
+.nv-js .nv-rv{opacity:0;transform:translateY(42px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.nv-js .nv-rv.is-in{opacity:1;transform:none}
+.nv-fill{transform-origin:right center}
+.nv-js .nv-fill{transform:scaleX(0);transition:transform 1.8s cubic-bezier(.2,.7,.2,1) .3s}
+.nv-js .nv-fill.is-in{transform:scaleX(1)}
+#nv-stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.nv-fa{animation:nvFloatA 7s ease-in-out infinite}
+.nv-fb{animation:nvFloatB 6s ease-in-out infinite}
+.nv-fc{animation:nvFloatC 8s ease-in-out infinite}
+.nv-blob{animation:nvBlob 18s ease-in-out infinite}
+.nv-track{animation:nvMarquee 32s linear infinite}
+.nv-card{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+.nv-card:hover{transform:translateY(-8px) perspective(900px) rotateX(3deg)!important;border-color:rgba(47,107,255,.6)!important;box-shadow:0 24px 60px -20px rgba(47,107,255,.45)}
+.nv-btn{position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.nv-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(120%);transition:transform .7s}
+.nv-btn:hover::after{transform:translateX(-120%)}
+.nv-btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px -10px rgba(47,107,255,.8)}
+.nv-pulse{animation:nvPulse 2.4s ease-out infinite}
+.nv-shot{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.nv-card:hover .nv-shot{transform:scale(1.04)}
+.nv-bento{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media (max-width:860px){.nv-bento>*{grid-column:span 6!important}.nv-hide-sm{display:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.nv-js .nv-rv,.nv-js .nv-fill{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+<div dir="rtl" style="font-family: 'IBM Plex Sans Arabic', Tahoma, sans-serif; color: #e8edf8; background: #050b1f; line-height: 1.75; position: relative; overflow: hidden">
+<canvas id="nv-stars" aria-hidden="true"></canvas>
+<div style="position: relative; z-index: 1">
+
+<!-- HEADER -->
+<header style="position: relative; z-index: 5; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(5,11,31,0.6); backdrop-filter: blur(14px)">
+<div style="max-width: 1240px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<div dir="ltr" style="display: flex; align-items: center; gap: 12px">
+<svg width="40" height="40" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 4 L90 27 L90 73 L50 96 L10 73 L10 27 Z" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"></path><path d="M33 68 V32 L67 68 V32" stroke="#2f6bff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div style="display: flex; flex-direction: column; line-height: 1.1"><span style="font-weight: 700; font-size: 20px; letter-spacing: 3px; color: #ffffff">NOVIX</span><span style="font-size: 10px; letter-spacing: 4px; color: #8a97b8">TECHNOLOGIES</span></div>
+</div>
+<nav aria-label="أقسام الصفحة" style="display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: 15px">
+<a href="#services" style="color: #c9d3ea; text-decoration: none">خدماتنا</a>
+<a href="#work" style="color: #c9d3ea; text-decoration: none">أعمالنا</a>
+<a href="#tech" style="color: #c9d3ea; text-decoration: none">التقنيات</a>
+<a href="#pricing" style="color: #c9d3ea; text-decoration: none">الباقات</a>
+<a href="#process" style="color: #c9d3ea; text-decoration: none">مراحل العمل</a>
+<a class="nv-btn" href="https://wa.me/9647705352992" style="background: #2f6bff; color: #ffffff; text-decoration: none; font-weight: 600; padding: 10px 20px; border-radius: 999px; min-height: 44px; display: inline-flex; align-items: center">تواصل معنا</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section style="position: relative; padding: 72px 24px 110px">
+<div class="nv-blob" aria-hidden="true" style="position: absolute; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(47,107,255,0.55), transparent 65%); top: -180px; left: -120px; filter: blur(40px)"></div>
+<div class="nv-blob" aria-hidden="true" style="position: absolute; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(124,77,255,0.35), transparent 65%); bottom: -160px; right: -80px; filter: blur(50px); animation-delay: -6s"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%)"></div>
+
+<div style="position: relative; max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div style="flex: 1 1 460px; display: flex; flex-direction: column; gap: 22px; align-items: flex-start">
+<span class="nv-in" dir="ltr" style="display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; border-radius: 999px; border: 1px solid rgba(143,176,255,0.3); background: rgba(47,107,255,0.1); color: #a9c1ff; font-size: 14px; letter-spacing: .5px"><span class="nv-pulse" style="width: 8px; height: 8px; border-radius: 50%; background: #2f6bff"></span>We Design. We Develop. We Deliver.</span>
+<h1 class="nv-in nv-d1" style="margin: 0; font-size: clamp(38px, 5.4vw, 70px); line-height: 1.22; font-weight: 700; color: #ffffff; letter-spacing: -0.5px">نحوّل أفكارك إلى <span style="background: linear-gradient(90deg, #8fb0ff, #2f6bff, #a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent">حلول رقمية</span> متكاملة</h1>
+<p class="nv-in nv-d2" style="margin: 0; font-size: 19px; color: #a6b1cc; max-width: 560px">نصمّم ونطوّر المواقع الإلكترونية والمتاجر والتطبيقات والأنظمة البرمجية، لنساعد أعمالك على الانتقال إلى العالم الرقمي بثقة.</p>
+<div class="nv-in nv-d3" style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px">
+<a class="nv-btn" href="https://wa.me/9647705352992" style="background: #2f6bff; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 17px; padding: 15px 30px; border-radius: 14px; min-height: 48px; display: inline-flex; align-items: center">اطلب عرض سعر</a>
+<a href="#work" style="border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.04); color: #ffffff; text-decoration: none; font-weight: 500; font-size: 17px; padding: 15px 30px; border-radius: 14px; min-height: 48px; display: inline-flex; align-items: center; backdrop-filter: blur(8px)">استعرض أعمالنا</a>
+</div>
+<div class="nv-in nv-d4" style="display: flex; flex-wrap: wrap; gap: 36px; margin-top: 30px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.08)">
+<div style="display: flex; flex-direction: column"><span style="font-size: 30px; font-weight: 700; color: #ffffff">٢٠٢٢</span><span style="font-size: 14px; color: #8a97b8">بداية رحلتنا</span></div>
+<div style="display: flex; flex-direction: column"><span style="font-size: 30px; font-weight: 700; color: #ffffff">+٨</span><span style="font-size: 14px; color: #8a97b8">متاجر منجزة</span></div>
+<div style="display: flex; flex-direction: column"><span style="font-size: 30px; font-weight: 700; color: #ffffff">٣</span><span style="font-size: 14px; color: #8a97b8">متاجر تطبيقات</span></div>
+</div>
+</div>
+
+<div style="flex: 1 1 440px; position: relative; height: 560px; display: flex; align-items: center; justify-content: center" aria-label="شاشات من تطبيقاتنا">
+<div aria-hidden="true" style="position: absolute; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(47,107,255,0.45), transparent 70%); filter: blur(30px)"></div>
+<div class="nv-fa" style="position: absolute; right: 2%; top: 70px; width: 200px; border-radius: 34px; border: 6px solid #1a2442; overflow: hidden; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8)"><img src="images/homena-1.webp" alt="تطبيق هومنا" style="width: 100%; display: block"></div>
+<div class="nv-fc" style="position: absolute; left: 2%; top: 90px; width: 200px; border-radius: 34px; border: 6px solid #1a2442; overflow: hidden; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8)"><img src="images/nabu-1.webp" alt="تطبيق نابو" style="width: 100%; display: block"></div>
+<div class="nv-fb" style="position: relative; z-index: 2; width: 240px; border-radius: 40px; border: 7px solid #22305a; overflow: hidden; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.9), 0 0 0 1px rgba(143,176,255,0.25)"><img src="images/mogambo-1.webp" alt="تطبيق موغامبو" style="width: 100%; display: block"></div>
+</div>
+</div>
+</section>
+
+<!-- MARQUEE -->
+<div dir="ltr" style="position: relative; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); padding: 22px 0; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)">
+<div class="nv-track" style="display: flex; gap: 56px; width: max-content; font-size: 22px; font-weight: 600; color: #6f7ea3; white-space: nowrap">
+<span>موغامبو</span><span style="color: #2f6bff">✦</span><span>هومنا</span><span style="color: #2f6bff">✦</span><span>نابو</span><span style="color: #2f6bff">✦</span><span>الطيف</span><span style="color: #2f6bff">✦</span><span>الزهراء</span><span style="color: #2f6bff">✦</span><span>المواسم</span><span style="color: #2f6bff">✦</span><span>مُهرة</span><span style="color: #2f6bff">✦</span><span>السوق الحر</span><span style="color: #2f6bff">✦</span><span>أبو حسن</span><span style="color: #2f6bff">✦</span>
+<span>موغامبو</span><span style="color: #2f6bff">✦</span><span>هومنا</span><span style="color: #2f6bff">✦</span><span>نابو</span><span style="color: #2f6bff">✦</span><span>الطيف</span><span style="color: #2f6bff">✦</span><span>الزهراء</span><span style="color: #2f6bff">✦</span><span>المواسم</span><span style="color: #2f6bff">✦</span><span>مُهرة</span><span style="color: #2f6bff">✦</span><span>السوق الحر</span><span style="color: #2f6bff">✦</span><span>أبو حسن</span><span style="color: #2f6bff">✦</span>
+</div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" style="padding: 110px 24px">
+<div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px">
+<div class="nv-rv" style="display: flex; flex-direction: column; gap: 10px; max-width: 640px">
+<span style="color: #2f6bff; font-weight: 600; font-size: 15px">خدماتنا التقنية</span>
+<h2 style="margin: 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.3; font-weight: 700; color: #ffffff">كل ما يحتاجه مشروعك الرقمي، في مكان واحد</h2>
+</div>
+<div class="nv-bento" style="display: grid; gap: 18px">
+<div class="nv-card nv-rv" style="grid-column: span 4; position: relative; overflow: hidden; border-radius: 26px; padding: 34px; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(145deg, rgba(47,107,255,0.22), rgba(255,255,255,0.03)); min-height: 260px; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; top: 30px; right: 32px"><rect x="6" y="2" width="12" height="20" rx="3"></rect><path d="M11 18h2"></path></svg>
+<h3 style="margin: 0; font-size: 26px; font-weight: 700; color: #ffffff">تطبيقات الهواتف الذكية</h3>
+<p style="margin: 0; font-size: 16px; color: #b6c1db; max-width: 460px">تطبيقات iOS وأندرويد ببرمجة مخصّصة، منشورة على Google Play و App Store و AppGallery.</p>
+</div>
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; padding: 30px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); min-height: 260px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: auto"><path d="M3 9l1.5-5h15L21 9"></path><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"></path><path d="M5 13v7h14v-7"></path></svg>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #ffffff">المتاجر الإلكترونية</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">متاجر شوبيفاي عربية بالدفع عند الاستلام.</p>
+</div>
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; padding: 30px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); min-height: 230px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: auto"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"></path></svg>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #ffffff">تصميم وتطوير المواقع</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">مواقع سريعة ومتوافقة مع الهواتف.</p>
+</div>
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; padding: 30px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); min-height: 230px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8fb0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: auto"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M8 21h8"></path><path d="M12 18v3"></path><path d="M9 9l-2 2 2 2"></path><path d="M15 9l2 2-2 2"></path></svg>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #ffffff">الأنظمة والبرمجيات الخاصة</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">لوحات تحكّم، بوابات دفع، وأتمتة الواتساب.</p>
+</div>
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; padding: 30px; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(145deg, rgba(124,77,255,0.18), rgba(255,255,255,0.03)); min-height: 230px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: auto"><path d="M12 3l9 5-9 5-9-5z"></path><path d="M3 13l9 5 9-5"></path></svg>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #ffffff">الواجهات وتجربة المستخدم</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">تصاميم واضحة تقود العميل إلى الشراء.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FEATURED: MOGAMBO -->
+<section id="work" style="padding: 40px 24px 110px; position: relative">
+<div class="nv-blob" aria-hidden="true" style="position: absolute; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(47,107,255,0.25), transparent 65%); top: 80px; right: 10%; filter: blur(50px)"></div>
+<div style="position: relative; max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px">
+<div class="nv-rv" style="display: flex; flex-direction: column; gap: 10px">
+<span style="color: #2f6bff; font-weight: 600; font-size: 15px">أعمالنا</span>
+<h2 style="margin: 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.3; font-weight: 700; color: #ffffff">مشاريع حقيقية تعمل الآن</h2>
+</div>
+
+<div class="nv-rv" style="border-radius: 32px; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)); backdrop-filter: blur(10px); padding: clamp(24px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+<div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 16px">
+<span style="align-self: flex-start; font-size: 13px; font-weight: 600; color: #a9c1ff; border: 1px solid rgba(143,176,255,0.3); padding: 4px 14px; border-radius: 999px">المشروع الأبرز</span>
+<h3 dir="ltr" style="margin: 0; font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: #ffffff; letter-spacing: 1px; text-align: right">MOGAMBO STORE</h3>
+<p style="margin: 0; font-size: 17px; color: #a6b1cc">تطبيق ومتجر للتسوق الإلكتروني يضم أكثر من ٥٠٠٠ منتج، منشور على متاجر التطبيقات الثلاثة.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<li style="font-size: 15px; color: #dce4f5; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 12px 14px">دخول برمز عبر الواتساب</li>
+<li style="font-size: 15px; color: #dce4f5; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 12px 14px">إشعارات الطلبات والعروض</li>
+<li style="font-size: 15px; color: #dce4f5; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 12px 14px">واجهة تُدار من لوحة تحكّم</li>
+<li style="font-size: 15px; color: #dce4f5; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 12px 14px">روابط تفتح داخل التطبيق</li>
+</ul>
+<a href="https://mogambonlinestore.com/" style="align-self: flex-start; font-weight: 600; font-size: 16px; min-height: 44px; display: inline-flex; align-items: center; gap: 8px">mogambonlinestore.com ←</a>
+</div>
+<div style="flex: 1 1 460px; display: flex; justify-content: center; align-items: flex-end; gap: 14px; perspective: 1200px">
+<div class="nv-fa nv-hide-sm" style="width: 170px; border-radius: 30px; border: 5px solid #1a2442; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8)"><img src="images/mogambo-2.webp" alt="أقسام تطبيق موغامبو" style="width: 100%; display: block"></div>
+<div class="nv-fb" style="width: 210px; border-radius: 36px; border: 6px solid #22305a; overflow: hidden; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.9)"><img src="images/mogambo-1.webp" alt="الشاشة الرئيسية لتطبيق موغامبو" style="width: 100%; display: block"></div>
+<div class="nv-fc nv-hide-sm" style="width: 170px; border-radius: 30px; border: 5px solid #1a2442; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8)"><img src="images/mogambo-3.webp" alt="طلبات تطبيق موغامبو" style="width: 100%; display: block"></div>
+</div>
+</div>
+
+<!-- APPS -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 22px">
+<div class="nv-card nv-rv" style="border-radius: 28px; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(170deg, rgba(178,34,34,0.18), rgba(255,255,255,0.02)); padding: 30px; display: flex; flex-direction: column; gap: 22px; overflow: hidden">
+<div style="display: flex; justify-content: center; gap: 14px; height: 340px; overflow: hidden; align-items: flex-start">
+<div style="width: 160px; border-radius: 28px; border: 5px solid #2a1a24; overflow: hidden; margin-top: 30px"><img class="nv-shot" src="images/homena-1.webp" alt="تطبيق هومنا" style="width: 100%; display: block"></div>
+<div style="width: 160px; border-radius: 28px; border: 5px solid #2a1a24; overflow: hidden"><img class="nv-shot" src="images/homena-2.webp" alt="سلة تطبيق هومنا" style="width: 100%; display: block"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 24px; font-weight: 700; color: #ffffff">هومنا</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">متجر إلكتروني وتطبيق iOS وأندرويد للأجهزة المنزلية.</p>
+<a href="https://homenaiq.com/" style="font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">homenaiq.com ←</a>
+</div>
+</div>
+<div class="nv-card nv-rv" style="border-radius: 28px; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(170deg, rgba(47,107,255,0.2), rgba(255,255,255,0.02)); padding: 30px; display: flex; flex-direction: column; gap: 22px; overflow: hidden">
+<div style="display: flex; justify-content: center; gap: 14px; height: 340px; overflow: hidden; align-items: flex-start">
+<div style="width: 150px; border-radius: 28px; border: 5px solid #1a2442; overflow: hidden; margin-top: 40px"><img class="nv-shot" src="images/nabu-2.webp" alt="أقسام تطبيق نابو" style="width: 100%; display: block"></div>
+<div style="width: 150px; border-radius: 28px; border: 5px solid #1a2442; overflow: hidden"><img class="nv-shot" src="images/nabu-1.webp" alt="تطبيق نابو" style="width: 100%; display: block"></div>
+<div class="nv-hide-sm" style="width: 150px; border-radius: 28px; border: 5px solid #1a2442; overflow: hidden; margin-top: 40px"><img class="nv-shot" src="images/nabu-3.webp" alt="سلة تطبيق نابو" style="width: 100%; display: block"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 24px; font-weight: 700; color: #ffffff">نابو</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">أول تطبيق عراقي لتجارة قطع غيار الموبايل.</p>
+<a href="https://nabuparts.com/" style="font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">nabuparts.com ←</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TECH -->
+<section id="tech" style="padding: 40px 24px 110px; position: relative">
+<div class="nv-blob" aria-hidden="true" style="position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(124,77,255,0.22), transparent 65%); top: 0; left: 5%; filter: blur(60px)"></div>
+<div style="position: relative; max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px">
+<div class="nv-rv" style="display: flex; flex-direction: column; gap: 10px; max-width: 720px">
+<span style="color: #2f6bff; font-weight: 600; font-size: 15px">ما خلف الواجهة</span>
+<h2 style="margin: 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.3; font-weight: 700; color: #ffffff">بنية تقنية متكاملة، لا مجرد تطبيق</h2>
+<p style="margin: 0; font-size: 17px; color: #a6b1cc">كل مشروع نسلّمه يأتي مع أدوات تمنحك السيطرة الكاملة على متجرك وتطبيقك بعد الإطلاق. هذه تقنيات تعمل فعلياً في تطبيقاتنا المنشورة.</p>
+</div>
+
+<div class="nv-bento" style="display: grid; gap: 18px">
+
+<div class="nv-card nv-rv" style="grid-column: span 4; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(150deg, rgba(47,107,255,0.2), rgba(255,255,255,0.02)); padding: 32px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center">
+<div style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 10px">
+<span dir="ltr" style="align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #a9c1ff; border: 1px solid rgba(143,176,255,0.3); padding: 3px 12px; border-radius: 999px">SANITY CMS</span>
+<h3 style="margin: 0; font-size: 24px; font-weight: 700; color: #ffffff">لوحة تحكّم بواجهة التطبيق</h3>
+<p style="margin: 0; font-size: 15px; color: #b6c1db">غيّر البنرات والأقسام وترتيب الصفحة الرئيسية بنفسك، وتظهر التعديلات للعملاء فوراً دون إصدار تحديث جديد، مع معاينة على هاتفك قبل النشر.</p>
+</div>
+<div aria-hidden="true" style="flex: 1 1 240px; border-radius: 18px; background: rgba(5,11,31,0.7); border: 1px solid rgba(255,255,255,0.08); padding: 14px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #ff5f57"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #febc2e"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #28c840"></span></div>
+<div style="height: 56px; border-radius: 10px; background: linear-gradient(90deg, #1238a8, #2f6bff)"></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px"><span style="aspect-ratio: 1; border-radius: 50%; background: rgba(255,255,255,0.1)"></span><span style="aspect-ratio: 1; border-radius: 50%; background: rgba(255,255,255,0.1)"></span><span style="aspect-ratio: 1; border-radius: 50%; background: rgba(255,255,255,0.1)"></span><span style="aspect-ratio: 1; border-radius: 50%; background: rgba(255,255,255,0.1)"></span></div>
+<div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #8a97b8"><span>الصفحة الرئيسية</span><span style="background: #28c840; color: #05200c; font-weight: 600; padding: 2px 10px; border-radius: 999px">نُشر</span></div>
+</div>
+</div>
+
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<div aria-hidden="true" style="border-radius: 16px; background: rgba(5,11,31,0.7); border: 1px solid rgba(255,255,255,0.08); padding: 12px 14px; display: flex; gap: 10px; align-items: center">
+<span style="width: 34px; height: 34px; border-radius: 9px; background: #2f6bff; flex-shrink: 0"></span>
+<div style="display: flex; flex-direction: column; line-height: 1.4"><span style="font-size: 13px; font-weight: 600; color: #ffffff">عرض خاص لك</span><span style="font-size: 12px; color: #8a97b8">خصم ٢٠٪ لفترة محدودة</span></div>
+</div>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #ffffff">بث الإشعارات</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">لوحة لإرسال إشعارات العروض لكل العملاء، وإشعارات تلقائية بحالة كل طلب على iOS وأندرويد.</p>
+</div>
+
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); padding: 30px; display: flex; flex-direction: column; gap: 12px">
+<div aria-hidden="true" style="display: flex; align-items: center; gap: 0; padding: 10px 4px">
+<span style="width: 16px; height: 16px; border-radius: 50%; background: #28c840; flex-shrink: 0"></span><span style="flex: 1; height: 2px; background: #28c840"></span><span style="width: 16px; height: 16px; border-radius: 50%; background: #28c840; flex-shrink: 0"></span><span style="flex: 1; height: 2px; background: repeating-linear-gradient(90deg, rgba(255,255,255,0.25) 0 4px, transparent 4px 8px)"></span><span style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); flex-shrink: 0"></span>
+</div>
+<div aria-hidden="true" style="display: flex; justify-content: space-between; font-size: 11px; color: #8a97b8; margin-top: -8px"><span>تم التأكيد</span><span>قيد التجهيز</span><span>تم التسليم</span></div>
+<h3 style="margin: 0; font-size: 21px; font-weight: 700; color: #ffffff">تتبّع الطلبات</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">يتابع العميل طلبه مرحلة بمرحلة من داخل التطبيق، مع سجل كامل لكل طلباته.</p>
+</div>
+
+<div class="nv-card nv-rv" style="grid-column: span 4; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: linear-gradient(150deg, rgba(124,77,255,0.18), rgba(255,255,255,0.02)); padding: 32px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center">
+<div style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 10px">
+<span dir="ltr" style="align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #c4b5fd; border: 1px solid rgba(196,181,253,0.3); padding: 3px 12px; border-radius: 999px">SENTRY</span>
+<h3 style="margin: 0; font-size: 24px; font-weight: 700; color: #ffffff">مراقبة الأخطاء لحظة حدوثها</h3>
+<p style="margin: 0; font-size: 15px; color: #b6c1db">نظام يرصد أي خلل أو توقف في التطبيق على أجهزة العملاء فوراً، فنصلحه قبل أن يلاحظه أحد، مع حماية خصوصية بيانات المستخدمين.</p>
+</div>
+<div aria-hidden="true" dir="ltr" style="flex: 1 1 240px; border-radius: 18px; background: rgba(5,11,31,0.75); border: 1px solid rgba(255,255,255,0.08); padding: 14px; display: flex; flex-direction: column; gap: 8px; font-family: ui-monospace, Menlo, monospace; font-size: 12px">
+<div style="display: flex; justify-content: space-between; color: #8a97b8"><span>Issues</span><span>last 24h</span></div>
+<div style="display: flex; align-items: center; gap: 8px; color: #dce4f5"><span style="width: 8px; height: 8px; border-radius: 50%; background: #febc2e"></span><span style="flex: 1">Network timeout</span><span style="color: #28c840">resolved</span></div>
+<div style="display: flex; align-items: center; gap: 8px; color: #dce4f5"><span style="width: 8px; height: 8px; border-radius: 50%; background: #ff5f57"></span><span style="flex: 1">Checkout crash</span><span style="color: #28c840">resolved</span></div>
+<div style="display: flex; align-items: center; gap: 8px; color: #dce4f5"><span style="width: 8px; height: 8px; border-radius: 50%; background: #28c840"></span><span style="flex: 1">New release</span><span style="color: #8fb0ff">monitoring</span></div>
+</div>
+</div>
+
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span dir="ltr" style="align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #a9c1ff">NODE.JS · POSTGRESQL</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">خادم خاص بمشروعك</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">خادم مستقل للطلبات والحسابات والإشعارات، باستجابة أقل من ثانية.</p>
+</div>
+
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span dir="ltr" style="align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #a9c1ff">OTA UPDATES</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">تحديثات فورية</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">الإصلاحات تصل للمستخدمين مباشرة دون انتظار مراجعة المتاجر، مع إمكانية فرض التحديث من الخادم.</p>
+</div>
+
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span dir="ltr" style="align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #a9c1ff">WHATSAPP OTP</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">دخول برمز عبر الواتساب</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">تسجيل آمن وسريع بلا كلمة مرور، يناسب المستخدم العراقي.</p>
+</div>
+
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span dir="ltr" style="align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #a9c1ff">DEEP LINKS</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">روابط ذكية</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">روابط الموقع والإعلانات والواتساب تفتح المنتج نفسه داخل التطبيق مباشرة.</p>
+</div>
+
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span dir="ltr" style="align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #a9c1ff">SHOPIFY SYNC</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">متجر وتطبيق بقلب واحد</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">المنتجات والأسعار والطلبات موحّدة بين الموقع والتطبيق، تعدّلها مرة واحدة.</p>
+</div>
+
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span dir="ltr" style="align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #a9c1ff">LOYALTY</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">مستويات ولاء العملاء</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">ترقية العميل تلقائياً حسب طلباته: جديد، متفاعل، ذهبي، ماسي.</p>
+</div>
+
+<div class="nv-card nv-rv" style="grid-column: span 2; border-radius: 26px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span dir="ltr" style="align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 1px; color: #a9c1ff">PAYMENTS</span>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">بوابات الدفع العراقية</h3>
+<p style="margin: 0; font-size: 15px; color: #a6b1cc">ربط مع زين كاش إلى جانب الدفع عند الاستلام.</p>
+</div>
+
+</div>
+
+<div class="nv-rv" dir="ltr" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px">
+<span style="font-size: 14px; color: #c9d3ea; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03)">React Native</span>
+<span style="font-size: 14px; color: #c9d3ea; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03)">Expo</span>
+<span style="font-size: 14px; color: #c9d3ea; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03)">Shopify</span>
+<span style="font-size: 14px; color: #c9d3ea; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03)">Sanity</span>
+<span style="font-size: 14px; color: #c9d3ea; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03)">Node.js</span>
+<span style="font-size: 14px; color: #c9d3ea; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03)">PostgreSQL</span>
+<span style="font-size: 14px; color: #c9d3ea; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03)">Railway</span>
+<span style="font-size: 14px; color: #c9d3ea; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03)">Sentry</span>
+<span style="font-size: 14px; color: #c9d3ea; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03)">Shopify Hydrogen</span>
+</div>
+</div>
+</section>
+
+<!-- WEBSITES -->
+<section style="padding: 40px 24px 110px">
+<div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px">
+<div class="nv-rv" style="display: flex; flex-direction: column; gap: 10px">
+<span style="color: #2f6bff; font-weight: 600; font-size: 15px">متاجر إلكترونية</span>
+<h2 style="margin: 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.3; font-weight: 700; color: #ffffff">متاجر بنيناها لعملائنا</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 26px">
+
+<div class="nv-card nv-rv" style="border-radius: 22px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); overflow: hidden; display: flex; flex-direction: column">
+<div dir="ltr" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #28c840"></span>
+<span style="flex: 1; margin-left: 12px; font-size: 13px; color: #8a97b8; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 4px 12px; text-align: center">altaifstore.com</span>
+</div>
+<div style="aspect-ratio: 1400 / 720; overflow: hidden; background: #0d1530"><img loading="lazy" class="nv-shot" src="images/site-altaif.webp" alt="الطيف" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column"><h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">الطيف</h3><span style="font-size: 14px; color: #8a97b8">متجر أجهزة كهربائية</span></div>
+<a href="https://altaifstore.com/" style="font-weight: 600; font-size: 14px; color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); padding: 8px 16px; border-radius: 999px; min-height: 40px; display: inline-flex; align-items: center">زيارة المتجر ←</a>
+</div>
+</div>
+
+<div class="nv-card nv-rv" style="border-radius: 22px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); overflow: hidden; display: flex; flex-direction: column">
+<div dir="ltr" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #28c840"></span>
+<span style="flex: 1; margin-left: 12px; font-size: 13px; color: #8a97b8; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 4px 12px; text-align: center">mogambonlinestore.com</span>
+</div>
+<div style="aspect-ratio: 1400 / 720; overflow: hidden; background: #0d1530"><img loading="lazy" class="nv-shot" src="images/site-mogambo.webp" alt="موغامبو" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column"><h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">موغامبو</h3><span style="font-size: 14px; color: #8a97b8">متجر إلكترونيات وأجهزة منزلية</span></div>
+<a href="https://mogambonlinestore.com/" style="font-weight: 600; font-size: 14px; color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); padding: 8px 16px; border-radius: 999px; min-height: 40px; display: inline-flex; align-items: center">زيارة المتجر ←</a>
+</div>
+</div>
+
+<div class="nv-card nv-rv" style="border-radius: 22px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); overflow: hidden; display: flex; flex-direction: column">
+<div dir="ltr" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #28c840"></span>
+<span style="flex: 1; margin-left: 12px; font-size: 13px; color: #8a97b8; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 4px 12px; text-align: center">homenaiq.com</span>
+</div>
+<div style="aspect-ratio: 1400 / 720; overflow: hidden; background: #0d1530"><img loading="lazy" class="nv-shot" src="images/site-homena.webp" alt="هومنا" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column"><h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">هومنا</h3><span style="font-size: 14px; color: #8a97b8">متجر أجهزة منزلية</span></div>
+<a href="https://homenaiq.com/" style="font-weight: 600; font-size: 14px; color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); padding: 8px 16px; border-radius: 999px; min-height: 40px; display: inline-flex; align-items: center">زيارة المتجر ←</a>
+</div>
+</div>
+
+<div class="nv-card nv-rv" style="border-radius: 22px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); overflow: hidden; display: flex; flex-direction: column">
+<div dir="ltr" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #28c840"></span>
+<span style="flex: 1; margin-left: 12px; font-size: 13px; color: #8a97b8; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 4px 12px; text-align: center">alzahrashop.com</span>
+</div>
+<div style="aspect-ratio: 1400 / 720; overflow: hidden; background: #0d1530"><img loading="lazy" class="nv-shot" src="images/site-alzahra.webp" alt="الزهراء" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column"><h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">الزهراء</h3><span style="font-size: 14px; color: #8a97b8">متجر جملة بصفحة دفع مخصّصة</span></div>
+<a href="https://alzahrashop.com/" style="font-weight: 600; font-size: 14px; color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); padding: 8px 16px; border-radius: 999px; min-height: 40px; display: inline-flex; align-items: center">زيارة المتجر ←</a>
+</div>
+</div>
+
+<div class="nv-card nv-rv" style="border-radius: 22px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); overflow: hidden; display: flex; flex-direction: column">
+<div dir="ltr" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #28c840"></span>
+<span style="flex: 1; margin-left: 12px; font-size: 13px; color: #8a97b8; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 4px 12px; text-align: center">almawasimiq.com</span>
+</div>
+<div style="aspect-ratio: 1400 / 720; overflow: hidden; background: #0d1530"><img loading="lazy" class="nv-shot" src="images/site-mawasim.webp" alt="المواسم" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column"><h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">المواسم</h3><span style="font-size: 14px; color: #8a97b8">معرض أجهزة المطابخ</span></div>
+<a href="https://almawasimiq.com/" style="font-weight: 600; font-size: 14px; color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); padding: 8px 16px; border-radius: 999px; min-height: 40px; display: inline-flex; align-items: center">زيارة المتجر ←</a>
+</div>
+</div>
+
+<div class="nv-card nv-rv" style="border-radius: 22px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); overflow: hidden; display: flex; flex-direction: column">
+<div dir="ltr" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #28c840"></span>
+<span style="flex: 1; margin-left: 12px; font-size: 13px; color: #8a97b8; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 4px 12px; text-align: center">mohraiq.com</span>
+</div>
+<div style="aspect-ratio: 1400 / 720; overflow: hidden; background: #0d1530"><img loading="lazy" class="nv-shot" src="images/site-mohra.webp" alt="مُهرة" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column"><h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">مُهرة</h3><span style="font-size: 14px; color: #8a97b8">متجر أزياء نسائية</span></div>
+<a href="https://mohraiq.com/" style="font-weight: 600; font-size: 14px; color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); padding: 8px 16px; border-radius: 999px; min-height: 40px; display: inline-flex; align-items: center">زيارة المتجر ←</a>
+</div>
+</div>
+
+<div class="nv-card nv-rv" style="border-radius: 22px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); overflow: hidden; display: flex; flex-direction: column">
+<div dir="ltr" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #28c840"></span>
+<span style="flex: 1; margin-left: 12px; font-size: 13px; color: #8a97b8; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 4px 12px; text-align: center">freemarketiq.com</span>
+</div>
+<div style="aspect-ratio: 1400 / 720; overflow: hidden; background: #0d1530"><img loading="lazy" class="nv-shot" src="images/site-free.webp" alt="السوق الحر" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column"><h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">السوق الحر</h3><span style="font-size: 14px; color: #8a97b8">متجر أجهزة منزلية</span></div>
+<a href="https://freemarketiq.com/" style="font-weight: 600; font-size: 14px; color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,0.18); padding: 8px 16px; border-radius: 999px; min-height: 40px; display: inline-flex; align-items: center">زيارة المتجر ←</a>
+</div>
+</div>
+
+<div class="nv-card nv-rv" style="border-radius: 22px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); overflow: hidden; display: flex; flex-direction: column">
+<div dir="ltr" style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #28c840"></span>
+<span style="flex: 1; margin-left: 12px; font-size: 13px; color: #8a97b8; background: rgba(0,0,0,0.25); border-radius: 8px; padding: 4px 12px; text-align: center">قريباً</span>
+</div>
+<div style="aspect-ratio: 1400 / 720; overflow: hidden; background: #0d1530"><img loading="lazy" class="nv-shot" src="images/site-abuhassan.webp" alt="أبو حسن" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column"><h3 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff">أبو حسن</h3><span style="font-size: 14px; color: #8a97b8">متجر أجهزة كهربائية</span></div>
+
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- WHY -->
+<section style="padding: 40px 24px 110px">
+<div class="nv-rv" style="max-width: 1240px; margin: 0 auto; border-radius: 32px; border: 1px solid rgba(255,255,255,0.08); background: radial-gradient(ellipse at top right, rgba(47,107,255,0.25), transparent 60%), rgba(255,255,255,0.02); padding: clamp(28px, 5vw, 60px); display: flex; flex-wrap: wrap; gap: 40px">
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 12px">
+<span style="color: #2f6bff; font-weight: 600; font-size: 15px">لماذا NOVIX؟</span>
+<h2 style="margin: 0; font-size: clamp(28px, 3.6vw, 42px); line-height: 1.3; font-weight: 700; color: #ffffff">نبني كل مشروع كأنه مشروعنا الخاص</h2>
+</div>
+<ul style="flex: 2 1 520px; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px">
+
+<li style="display: flex; align-items: center; gap: 12px; font-size: 16px; color: #dce4f5; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fb0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path></svg>حلول مصمّمة حسب احتياجاتك</li>
+
+<li style="display: flex; align-items: center; gap: 12px; font-size: 16px; color: #dce4f5; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fb0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path></svg>تصاميم عصرية واحترافية</li>
+
+<li style="display: flex; align-items: center; gap: 12px; font-size: 16px; color: #dce4f5; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fb0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path></svg>اهتمام بتجربة المستخدم</li>
+
+<li style="display: flex; align-items: center; gap: 12px; font-size: 16px; color: #dce4f5; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fb0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path></svg>تطوير تقني متكامل</li>
+
+<li style="display: flex; align-items: center; gap: 12px; font-size: 16px; color: #dce4f5; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fb0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path></svg>متابعة المشروع في كل المراحل</li>
+
+<li style="display: flex; align-items: center; gap: 12px; font-size: 16px; color: #dce4f5; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fb0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="9"></circle><path d="M8 12l3 3 5-6"></path></svg>دعم فني مجاني ثلاثة أشهر</li>
+
+</ul>
+</div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="padding: 40px 24px 110px; position: relative">
+<div class="nv-blob" aria-hidden="true" style="position: absolute; width: 700px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(47,107,255,0.22), transparent 65%); top: 120px; left: 50%; margin-left: -350px; filter: blur(60px)"></div>
+<div style="position: relative; max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px">
+<div class="nv-rv" style="display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center">
+<span style="color: #2f6bff; font-weight: 600; font-size: 15px">الباقات والأسعار</span>
+<h2 style="margin: 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.3; font-weight: 700; color: #ffffff">أسعار واضحة من البداية</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; align-items: stretch">
+
+<div class="nv-card nv-rv" style="border-radius: 28px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); padding: 32px; display: flex; flex-direction: column; gap: 18px">
+<h3 style="margin: 0; font-size: 21px; font-weight: 600; color: #ffffff">باقة المتجر الإلكتروني</h3>
+<div style="display: flex; align-items: baseline; gap: 8px"><span style="font-size: 54px; font-weight: 700; line-height: 1; color: #ffffff">٦٠٠</span><span style="font-size: 18px; color: #a6b1cc">دولار</span></div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #c9d3ea">
+<li>✓ متجر شوبيفاي عربي بهوية علامتك</li>
+<li>✓ ربط النطاق والدفع عند الاستلام والتوصيل</li>
+<li>✓ رفع المنتجات الأولية وتنظيم الأقسام</li>
+<li>✓ تدريبك على إدارة المتجر</li>
+<li>✓ دعم فني مجاني ٣ أشهر</li>
+</ul>
+<p style="margin: 0; margin-top: auto; font-size: 13px; color: #8a97b8; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px">على العميل: اشتراك شوبيفاي والنطاق والتطبيقات المدفوعة.</p>
+</div>
+
+<div class="nv-card nv-rv" style="position: relative; border-radius: 28px; padding: 2px; background: linear-gradient(160deg, #8fb0ff, #2f6bff, #7c4dff); box-shadow: 0 30px 80px -20px rgba(47,107,255,0.6)">
+<div style="height: 100%; border-radius: 26px; background: #0a1430; padding: 32px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap"><h3 style="margin: 0; font-size: 21px; font-weight: 600; color: #ffffff">باقة المتجر والتطبيق</h3><span style="background: #2f6bff; color: #ffffff; font-size: 13px; font-weight: 600; padding: 4px 14px; border-radius: 999px">الأوفر</span></div>
+<div style="display: flex; align-items: baseline; gap: 8px"><span style="font-size: 54px; font-weight: 700; line-height: 1; background: linear-gradient(90deg, #ffffff, #8fb0ff); -webkit-background-clip: text; background-clip: text; color: transparent">٢٧٠٠</span><span style="font-size: 18px; color: #a6b1cc">دولار</span></div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #dce4f5">
+<li>✓ كل ما في باقة المتجر</li>
+<li>✓ كل ما في باقة التطبيق</li>
+<li>✓ متجر وتطبيق بنفس المنتجات والطلبات</li>
+<li>✓ دعم فني مجاني ٣ أشهر</li>
+</ul>
+<a class="nv-btn" href="https://wa.me/9647705352992" style="margin-top: auto; background: #2f6bff; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 16px; padding: 14px; border-radius: 14px; min-height: 48px; display: flex; align-items: center; justify-content: center">ابدأ مشروعك</a>
+</div>
+</div>
+
+<div class="nv-card nv-rv" style="border-radius: 28px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); padding: 32px; display: flex; flex-direction: column; gap: 18px">
+<h3 style="margin: 0; font-size: 21px; font-weight: 600; color: #ffffff">باقة التطبيق</h3>
+<div style="display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap"><span style="font-size: 16px; color: #a6b1cc">تبدأ من</span><span style="font-size: 54px; font-weight: 700; line-height: 1; color: #ffffff">٢٥٠٠</span><span style="font-size: 18px; color: #a6b1cc">دولار</span></div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #c9d3ea">
+<li>✓ تطبيق iOS وأندرويد</li>
+<li>✓ ربطه بمتجرك أو نظامك الحالي</li>
+<li>✓ الإشعارات</li>
+<li>✓ النشر على متاجر التطبيقات</li>
+<li>✓ دعم فني مجاني ٣ أشهر</li>
+</ul>
+<p style="margin: 0; margin-top: auto; font-size: 13px; color: #8a97b8; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px">السعر النهائي حسب حجم المشروع ومميزاته. على العميل: حساب Apple (٩٩ دولاراً سنوياً) وGoogle Play (٢٥ دولاراً مرة واحدة) والخادم إن لزم.</p>
+</div>
+</div>
+
+<div class="nv-rv" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; text-align: center">
+<span style="font-size: 15px; color: #c9d3ea; padding: 12px 20px; border-radius: 999px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08)">بعد ٣ أشهر مجانية: دعم وصيانة ١٠٠ دولار شهرياً، أو تسعير لكل حالة</span>
+<span style="font-size: 15px; color: #c9d3ea; padding: 12px 20px; border-radius: 999px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08)">الدفع: ٥٠٪ عند البدء و٥٠٪ عند التسليم</span>
+</div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" style="padding: 40px 24px 110px">
+<div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 50px">
+<div class="nv-rv" style="display: flex; flex-direction: column; gap: 10px">
+<span style="color: #2f6bff; font-weight: 600; font-size: 15px">مراحل تنفيذ المشروع</span>
+<h2 style="margin: 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.3; font-weight: 700; color: #ffffff">من الفكرة إلى الإطلاق</h2>
+</div>
+<div style="position: relative">
+<div class="nv-hide-sm" aria-hidden="true" style="position: absolute; top: 27px; right: 12%; left: 12%; height: 2px; background: rgba(255,255,255,0.08)"><div class="nv-fill" style="height: 100%; background: linear-gradient(270deg, #8fb0ff, #2f6bff)"></div></div>
+<ol style="position: relative; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 22px">
+
+<li class="nv-rv" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px">
+<span style="width: 56px; height: 56px; border-radius: 50%; background: #0a1430; border: 2px solid #2f6bff; color: #ffffff; font-weight: 700; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(47,107,255,0.45)">١</span>
+<span style="font-weight: 700; font-size: 19px; color: #ffffff">فهم الفكرة</span>
+<span style="font-size: 15px; color: #a6b1cc; max-width: 240px">نتعرّف على نشاطك واحتياجاتك ونقدّم عرض سعر واضحاً.</span>
+</li>
+
+<li class="nv-rv" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px">
+<span style="width: 56px; height: 56px; border-radius: 50%; background: #0a1430; border: 2px solid #2f6bff; color: #ffffff; font-weight: 700; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(47,107,255,0.45)">٢</span>
+<span style="font-weight: 700; font-size: 19px; color: #ffffff">التصميم</span>
+<span style="font-size: 15px; color: #a6b1cc; max-width: 240px">نعرض عليك التصميم ولا نبدأ التطوير إلا بموافقتك.</span>
+</li>
+
+<li class="nv-rv" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px">
+<span style="width: 56px; height: 56px; border-radius: 50%; background: #0a1430; border: 2px solid #2f6bff; color: #ffffff; font-weight: 700; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(47,107,255,0.45)">٣</span>
+<span style="font-weight: 700; font-size: 19px; color: #ffffff">التطوير والاختبار</span>
+<span style="font-size: 15px; color: #a6b1cc; max-width: 240px">نبني المشروع ونختبره على أجهزة حقيقية.</span>
+</li>
+
+<li class="nv-rv" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px">
+<span style="width: 56px; height: 56px; border-radius: 50%; background: #0a1430; border: 2px solid #2f6bff; color: #ffffff; font-weight: 700; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(47,107,255,0.45)">٤</span>
+<span style="font-weight: 700; font-size: 19px; color: #ffffff">الإطلاق والتدريب</span>
+<span style="font-size: 15px; color: #a6b1cc; max-width: 240px">نطلق مشروعك وندرّبك عليه ويبدأ الدعم المجاني.</span>
+</li>
+
+</ol>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="contact" style="padding: 20px 24px 90px">
+<div class="nv-rv" style="position: relative; overflow: hidden; max-width: 1240px; margin: 0 auto; border-radius: 36px; padding: clamp(40px, 7vw, 90px) 24px; background: linear-gradient(135deg, #1238a8, #2f6bff 55%, #6d3cff); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%)"></div>
+<h2 style="position: relative; margin: 0; font-size: clamp(32px, 5vw, 56px); font-weight: 700; color: #ffffff; line-height: 1.25">لديك فكرة مشروع؟</h2>
+<p style="position: relative; margin: 0; font-size: 19px; color: #e3eaff">دعنا نحوّلها إلى واقع رقمي. تواصل معنا وابدأ الآن.</p>
+<a class="nv-btn" href="https://wa.me/9647705352992" style="position: relative; margin-top: 8px; background: #ffffff; color: #0a1430; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 38px; border-radius: 16px; min-height: 52px; display: inline-flex; align-items: center">تواصل عبر الواتساب</a>
+<div style="position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; font-size: 16px">
+<a href="tel:+9647705352992" dir="ltr" style="color: #ffffff; min-height: 44px; display: inline-flex; align-items: center">0770 535 2992</a>
+<a href="mailto:contact@mogambonlinestore.com" style="color: #ffffff; min-height: 44px; display: inline-flex; align-items: center">contact@mogambonlinestore.com</a>
+</div>
+</div>
+<p dir="ltr" style="text-align: center; margin: 40px 0 0; font-size: 13px; letter-spacing: 4px; color: #5d6b8f">NOVIX TECHNOLOGIES · IRAQ</p>
+</section>
+
+</div>
+</div>
+<script>
+window.nvFx = function (doc) {
+  const root = doc.documentElement; root.classList.add('nv-js');
+  const els = doc.querySelectorAll('.nv-rv, .nv-fill');
+  let io = null;
+  if ('IntersectionObserver' in window) {
+    io = new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach((el) => io.observe(el));
+  } else { els.forEach((el) => el.classList.add('is-in')); }
+  const c = doc.getElementById('nv-stars'); if (!c) return () => { if (io) io.disconnect(); };
+  const ctx = c.getContext('2d');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w = 0, h = 0, pts = [], raf = 0, mx = -9999, my = -9999, sy = 0, lastSy = window.scrollY || 0;
+  function size() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth; h = window.innerHeight;
+    c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round(Math.max(36, Math.min(120, (w * h) / 13000)));
+    pts = Array.from({ length: n }, () => ({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, r: Math.random() * 1.5 + 0.5, z: Math.random() * 0.8 + 0.2 }));
+  }
+  function onMove(e) { const p = e.touches ? e.touches[0] : e; mx = p.clientX; my = p.clientY; }
+  function onLeave() { mx = -9999; my = -9999; }
+  function frame() {
+    const cur = window.scrollY || 0; sy = cur - lastSy; lastSy = cur;
+    ctx.clearRect(0, 0, w, h);
+    for (const p of pts) {
+      p.x += p.vx; p.y += p.vy - sy * 0.15 * p.z;
+      const dx = p.x - mx, dy = p.y - my, d = Math.hypot(dx, dy);
+      if (d < 140 && d > 0) { const f = (140 - d) / 140; p.x += (dx / d) * f * 2.2; p.y += (dy / d) * f * 2.2; }
+      if (p.x < -20) p.x = w + 20; if (p.x > w + 20) p.x = -20; if (p.y < -20) p.y = h + 20; if (p.y > h + 20) p.y = -20;
+    }
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i];
+      for (let j = i + 1; j < pts.length; j++) {
+        const b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < 120) { ctx.strokeStyle = 'rgba(143,176,255,' + (0.16 * (1 - d / 120)) + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+      }
+      const dm = Math.hypot(a.x - mx, a.y - my);
+      if (dm < 200) { ctx.strokeStyle = 'rgba(47,107,255,' + (0.5 * (1 - dm / 200)) + ')'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx, my); ctx.stroke(); }
+      ctx.fillStyle = 'rgba(220,230,255,' + (0.35 + a.z * 0.6) + ')';
+      ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); ctx.fill();
+    }
+    raf = window.requestAnimationFrame(frame);
+  }
+  function onVis() { if (doc.hidden) { window.cancelAnimationFrame(raf); raf = 0; } else if (!raf && !reduce) { raf = window.requestAnimationFrame(frame); } }
+  size();
+  window.addEventListener('resize', size);
+  window.addEventListener('pointermove', onMove, { passive: true });
+  window.addEventListener('touchmove', onMove, { passive: true });
+  window.addEventListener('pointerleave', onLeave);
+  doc.addEventListener('visibilitychange', onVis);
+  if (reduce) { frame(); window.cancelAnimationFrame(raf); raf = 0; } else { raf = window.requestAnimationFrame(frame); }
+  return () => { window.cancelAnimationFrame(raf); window.removeEventListener('resize', size); window.removeEventListener('pointermove', onMove); window.removeEventListener('touchmove', onMove); window.removeEventListener('pointerleave', onLeave); doc.removeEventListener('visibilitychange', onVis); if (io) io.disconnect(); };
+};
+document.addEventListener('DOMContentLoaded', function () { window.nvFx(document); });
+</script>
+</body>
+</html>
